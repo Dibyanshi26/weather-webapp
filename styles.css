@@ -1,0 +1,116 @@
+/* Overall body styling with the background image */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('evening.jpg'); /* Background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling due to flexbox */
+}
+
+/* Main app container styling with a lighter box */
+#app {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white for the container */
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Adjust width to fit the forecast horizontally */
+    max-width: 800px; /* Set a max width for larger screens */
+    border: 2px solid #7BDFF2; /* Light blue border */
+    box-sizing: border-box;
+}
+
+/* Title styling */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #1c2951; /* Dark slate blue color for "Weather App" */
+}
+
+/* Input field and button styling */
+#city-input {
+    padding: 10px;
+    border: 2px solid #007BFF; /* Border color */
+    border-radius: 5px;
+    background-color: #E5E8E8; /* Light background for input */
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#search-btn {
+    padding: 10px;
+    background-color: #1560BD; /* Denim blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#search-btn:hover {
+    background-color: #4682B4; /* Lighter denim blue on hover */
+}
+
+/* Weather information styling */
+#weather h2, #weather p {
+    color: #1c2951; /* Dark slate blue for weather info */
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Forecast container to hold all the forecast items horizontally */
+.forecast-container {
+    display: flex; /* Use flexbox to arrange items horizontally */
+    justify-content: space-between; /* Evenly space the forecast items */
+    margin-top: 20px; /* Add some space between weather info and forecast */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    padding: 20px 0;
+}
+
+/* Forecast item styling */
+.forecast-item {
+    flex: 1; /* Make each forecast item take up equal space */
+    min-width: 150px; /* Ensure the forecast items don’t shrink too much */
+    margin: 0 10px; /* Space between each forecast item */
+    text-align: center; /* Center align text */
+    background-color: rgba(255, 255, 255, 0.7); /* Add a slight background to each item */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the date, temperature, and weather description are styled properly */
+.forecast-item p {
+    margin: 10px 0;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    #app {
+        padding: 20px;
+        width: 90%; /* Reduce the container width on smaller screens */
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #weather h2, #weather p {
+        font-size: 16px;
+    }
+
+    /* Adjust the flex container to allow easier scrolling on small screens */
+    .forecast-container {
+        padding: 10px 0;
+    }
+
+    .forecast-item {
+        min-width: 100px; /* Reduce the width of each forecast item */
+    }
+}

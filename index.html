@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Weather App</h1>
+        <div id="input-section">
+            <!-- Input field for manual city entry -->
+            <input type="text" id="city-input" placeholder="Enter city">
+
+            <!-- Dropdown list to select from predefined cities -->
+            <select id="city-select">
+                <option value="">Or select a city</option>
+                <option value="London">London</option>
+                <option value="New York">New York</option>
+                <option value="Paris">Paris</option>
+                <option value="Sydney">Sydney</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Moscow">Moscow</option>
+                <option value="Beijing">Beijing</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Toronto">Toronto</option>
+            </select>
+            <button id="search-btn">Search</button>
+            <button id="unit-toggle">Switch to °F</button>
+        </div>
+        <div id="loading-spinner" style="display:none;">Loading...</div> <!-- Spinner for loading feedback -->
+        <div id="weather"></div>  <!-- Section to display current weather -->
+        <div id="forecast"></div> <!-- Section to display 5-day forecast -->
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
