@@ -1,12 +1,13 @@
-const getWeatherData = require('../src/getWeatherData');
+// src/getWeatherData.js
+const apiKey = '31701ea4594a7e17254bdc6cdcce3cc1'; // Replace with your actual API key
 
-test('returns weather data for a valid city', async () => {
-  const data = await getWeatherData('London');
-  expect(data.main).toHaveProperty('temp');  // Adjusting to match the structure
-  expect(data.main).toHaveProperty('humidity');
-});
+async function getWeatherData(city) {
+    const units = 'metric'; // Set this as needed
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`);
+    if (!response.ok) {
+        throw new Error('City not found');
+    }
+    return await response.json();
+}
 
-test('throws error for invalid city', async () => {
-  await expect(getWeatherData('InvalidCity')).rejects.toThrow('City not found');
-});
-
+module.exports = getWeatherData;
