@@ -1,13 +1,28 @@
-// src/getWeatherData.js
-const apiKey = '31701ea4594a7e17254bdc6cdcce3cc1'; // Replace with your actual API key
+const getWeatherData = require('../src/getWeatherData');
 
-async function getWeatherData(city) {
-    const units = 'metric'; // Set this as needed
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`);
-    if (!response.ok) {
-        throw new Error('City not found');
-    }
-    return await response.json();
-}
+// Ensure fetch is mocked
+beforeEach(() => {
+  fetch.resetMocks();
+});
 
-module.exports = getWeatherData;
+describe('getWeatherData Tests', () => {
+  test('should throw "City not found" error for an invalid city', async () => {
+    // Mock the fetch response to simulate a 404 error
+    fetch.mockResponseOnce('', { status: 404 });
+
+    await expect(getWeatherData('invalid-city')).rejects.toThrow('City not found');
+  });
+
+  test('should return data when called with a valid city', async () => {
+    // Mock the fetch response to simulate a valid response with JSON data
+    fetch.mockResponseOnce(JSON.stringify({
+      weather: [{ description: 'clear sky' }],
+      main: { temp: 25 },
+    }));
+
+    const result = await getWeatherData('sample-city');
+    expect(result).toBeDefined();
+    expect(result.weather[0].description).toBe('clear sky');
+    expect(result.main.temp).toBe(25);
+  });
+});

@@ -1,4 +1,4 @@
-const getWeatherData = require('/Users/dibyanshisingh/Desktop/weather-dashboard/weather-dashboard-clean/src/getWeatherData');
+const getWeatherData = require('../src/getWeatherData');
 const apiKey = '31701ea4594a7e17254bdc6cdcce3cc1';
 const isCelsius = true;
 
