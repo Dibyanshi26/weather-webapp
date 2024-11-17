@@ -19,7 +19,7 @@ jobs:
         with:
           submodules: true
           lfs: false
-      
+
       # Directly build and deploy without pre-deployment steps
       - name: Build And Deploy
         id: builddeploy
@@ -31,6 +31,7 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # API source code path - optional
           output_location: "" # No build output directory needed for simple static files
+          app_build_command: 'echo "No build step required"' # Added to skip the build step
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
