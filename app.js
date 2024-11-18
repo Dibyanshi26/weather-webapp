@@ -6,6 +6,7 @@ const cityInput = document.getElementById('city-input');  // Input field for man
 const citySelect = document.getElementById('city-select');  // Dropdown for city selection
 const loadingSpinner = document.getElementById('loading-spinner');
 const unitToggleBtn = document.getElementById('unit-toggle');
+const clearBtn = document.getElementById('clear-btn');  // Clear button element
 let isCelsius = true;
 
 // Toggle between Celsius and Fahrenheit
@@ -28,6 +29,15 @@ searchBtn.addEventListener('click', () => {
     } else {
         weatherDiv.innerHTML = '<p>Please enter or select a city.</p>';
     }
+});
+
+// Add click event to clear button
+clearBtn.addEventListener('click', () => {
+    cityInput.value = ''; // Clear the input field
+    citySelect.selectedIndex = 0; // Reset the dropdown to the first option
+    weatherDiv.innerHTML = ''; // Clear the weather display
+    forecastDiv.innerHTML = ''; // Clear the forecast display
+    cityInput.focus(); // Refocus on the input for better user experience
 });
 
 // Function to determine which city to use: dropdown or manual input
